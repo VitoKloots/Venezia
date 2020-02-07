@@ -31,6 +31,12 @@ class Bestelregel
      */
     private $betaald;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\ijsrecept", inversedBy="bestelregels")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $ijsrecept;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +74,18 @@ class Bestelregel
     public function setBetaald(?string $betaald): self
     {
         $this->betaald = $betaald;
+
+        return $this;
+    }
+
+    public function getIjsrecept(): ?ijsrecept
+    {
+        return $this->ijsrecept;
+    }
+
+    public function setIjsrecept(?ijsrecept $ijsrecept): self
+    {
+        $this->ijsrecept = $ijsrecept;
 
         return $this;
     }

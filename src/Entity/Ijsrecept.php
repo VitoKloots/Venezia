@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +43,16 @@ class Ijsrecept
      * @ORM\JoinColumn(nullable=false)
      */
     private $fruit;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Bestelregel", mappedBy="ijsrecept")
+     */
+    private $bestelregels;
+
+    public function __construct()
+    {
+        $this->bestelregels = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -103,6 +115,37 @@ class Ijsrecept
     public function setFruit(?fruit $fruit): self
     {
         $this->fruit = $fruit;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Bestelregel[]
+     */
+    public function getBestelregels(): Collection
+    {
+        return $this->bestelregels;
+    }
+
+    public function addBestelregel(Bestelregel $bestelregel): self
+    {
+        if (!$this->bestelregels->contains($bestelregel)) {
+            $this->bestelregels[] = $bestelregel;
+            $bestelregel->setIjsrecept($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBestelregel(Bestelregel $bestelregel): self
+    {
+        if ($this->bestelregels->contains($bestelregel)) {
+            $this->bestelregels->removeElement($bestelregel);
+            // set the owning side to null (unless already changed)
+            if ($bestelregel->getIjsrecept() === $this) {
+                $bestelregel->setIjsrecept(null);
+            }
+        }
 
         return $this;
     }
