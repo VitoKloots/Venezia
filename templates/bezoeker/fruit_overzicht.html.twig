@@ -1,23 +1,39 @@
 {% extends 'base.html.twig' %}
+
+{% block title %}Fruit index{% endblock %}
+
 {% block body %}
+    <h1>Fruit index</h1>
+
     <table class="table">
         <thead>
-        <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Seizoen</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
-        </tr>
+            <tr>
+                <th>Naam</th>
+                <th>Seizoen</th>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th>actions</th>
+                {% endif %}
+            </tr>
         </thead>
         <tbody>
         {% for fruits in fruit %}
-        <tr>
-            <th scope="row">{{ fruits.naam }}</th>
-            <td>{{ fruits.seizoen }}</td>
-            <td></td>
-            <td></td>
-        </tr>
+            <tr>
+                <td>{{ fruits.naam }}</td>
+                <td>{{ fruits.seizoen }}</td>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <td>
+                        <a href="{{ path('admin_fruit_show', {'id': fruits.id}) }}">show</a>
+                        <a href="{{ path('admin_fruit_edit', {'id': fruits.id}) }}">edit</a>
+                    </td>
+                {% endif %}
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
         {% endfor %}
         </tbody>
     </table>
+
+    <a href="{{ path('admin_fruit_new') }}">Create new</a>
 {% endblock %}

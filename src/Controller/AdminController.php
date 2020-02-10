@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Fruit;
 use App\Entity\Ijsrecept;
+use App\Form\FruitType;
 use App\Form\IjsreceptType;
+use App\Repository\FruitRepository;
 use App\Repository\IjsreceptRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,9 +33,76 @@ class AdminController extends AbstractController
      */
     public function indexIjsReceptAction(IjsreceptRepository $ijsreceptRepository): Response
     {
-        return $this->render('admin/ijsrecept/index.html.twig', [
+        return $this->render('admin/ijsrecept/fruit_overzicht.html.twig', [
             'ijsrecepts' => $ijsreceptRepository->findAll(),
         ]);
+    }
+
+    /**
+     * @Route("/fruit/new", name="fruit_new", methods={"GET","POST"})
+     */
+    public function newFruitAction(Request $request): Response
+    {
+        $fruit = new Fruit();
+        $form = $this->createForm(FruitType::class, $fruit);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($fruit);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('admin_fruit_index');
+        }
+
+        return $this->render('admin/fruit/new.html.twig', [
+            'fruit' => $fruit,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="fruit_show", methods={"GET"})
+     */
+    public function showFruitAction(Fruit $fruit): Response
+    {
+        return $this->render('admin/fruit/show.html.twig', [
+            'fruit' => $fruit,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/edit", name="fruit_edit", methods={"GET","POST"})
+     */
+    public function editFruitAction(Request $request, Fruit $fruit): Response
+    {
+        $form = $this->createForm(FruitType::class, $fruit);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('admin_fruit_index');
+        }
+
+        return $this->render('admin/fruit/edit.html.twig', [
+            'fruit' => $fruit,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="fruit_delete", methods={"DELETE"})
+     */
+    public function deleteFruitAction(Request $request, Fruit $fruit): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$fruit->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($fruit);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('fruit_index');
     }
 
     /**

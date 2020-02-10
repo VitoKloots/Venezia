@@ -20,7 +20,7 @@
                 <td>{{ ijsrecept.naam }}</td>
                 <td>{{ ijsrecept.ingredientenlijst }}</td>
                 <td>{{ ijsrecept.recept }}</td>
-                <td>{{ ijsrecept.kosten }}</td>
+                <td>&euro;{{ ijsrecept.kosten }}</td>
                 <td>
                     <a href="{{ path('admin_ijsrecept_show', {'id': ijsrecept.id}) }}">show</a>
                     <a href="{{ path('admin_ijsrecept_edit', {'id': ijsrecept.id}) }}">edit</a>

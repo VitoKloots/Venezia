@@ -2,18 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7349550-026a-41a7-9c99-1ff9d820c193" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/bezoeker/fruit_overzicht.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/BezoekerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BezoekerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Bestelregel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Bestelregel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Ijsrecept.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Ijsrecept.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200207091748.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200207092812.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200207105616.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/index.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bezoeker/index.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/LoginFromAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginFromAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/ijsrecept/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/ijsrecept/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/ijsrecept/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/ijsrecept/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bezoeker/fruit_overzicht.html.twig" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,6 +147,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Venezia\templates\bezoeker" />
       <recent name="C:\xampp\htdocs\Venezia\templates\admin" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -181,7 +178,7 @@
       <updated>1581066402027</updated>
       <workItem from="1581066406221" duration="28000" />
       <workItem from="1581066436349" duration="4537000" />
-      <workItem from="1581324649424" duration="3763000" />
+      <workItem from="1581324649424" duration="7417000" />
     </task>
     <servers />
   </component>
@@ -189,10 +186,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1581334496776">
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1581339563613">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581334496776" />
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581339563613" />
     <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1581326276823">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -205,5 +202,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="656" y="257" width="607" height="526" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1581334802992" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1581340299310">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1581340299310" />
   </component>
 </project>
