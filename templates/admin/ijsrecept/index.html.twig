@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <h1>Ijsrecept index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Naam</th>
+                <th>Ingredientenlijst</th>
+                <th>Recept</th>
+                <th>Kosten</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ijsrecept in ijsrecepts %}
+            <tr>
+                <td>{{ ijsrecept.naam }}</td>
+                <td>{{ ijsrecept.ingredientenlijst }}</td>
+                <td>{{ ijsrecept.recept }}</td>
+                <td>{{ ijsrecept.kosten }}</td>
+                <td>
+                    <a href="{{ path('admin_ijsrecept_show', {'id': ijsrecept.id}) }}">show</a>
+                    <a href="{{ path('admin_ijsrecept_edit', {'id': ijsrecept.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_ijsrecept_new') }}">Create new</a>
+{% endblock %}

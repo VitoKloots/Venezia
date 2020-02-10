@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Naam</th>
+            <th scope="col">Seizoen</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for fruits in fruit %}
+        <tr>
+            <th scope="row">{{ fruits.naam }}</th>
+            <td>{{ fruits.seizoen }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

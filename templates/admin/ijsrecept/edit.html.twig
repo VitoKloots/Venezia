@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <h1>Edit Ijsrecept</h1>
+
+    {{ include('admin/ijsrecept/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('admin_ijsrecept_index') }}">back to list</a>
+
+    {{ include('admin/ijsrecept/_delete_form.html.twig') }}
+{% endblock %}

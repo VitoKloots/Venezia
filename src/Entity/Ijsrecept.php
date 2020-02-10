@@ -39,7 +39,7 @@ class Ijsrecept
     private $kosten;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\fruit", inversedBy="ijsrecepts")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Fruit", inversedBy="ijsrecepts")
      * @ORM\JoinColumn(nullable=false)
      */
     private $fruit;

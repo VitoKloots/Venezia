@@ -32,10 +32,16 @@ class Bestelregel
     private $betaald;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\ijsrecept", inversedBy="bestelregels")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Ijsrecept", inversedBy="bestelregels")
      * @ORM\JoinColumn(nullable=false)
      */
     private $ijsrecept;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="bestelregels")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
 
     public function getId(): ?int
     {
@@ -86,6 +92,18 @@ class Bestelregel
     public function setIjsrecept(?ijsrecept $ijsrecept): self
     {
         $this->ijsrecept = $ijsrecept;
+
+        return $this;
+    }
+
+    public function getUser(): ?user
+    {
+        return $this->user;
+    }
+
+    public function setUser(?user $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

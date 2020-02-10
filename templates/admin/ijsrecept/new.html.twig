@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <h1>Create new Ijsrecept</h1>
+
+    {{ include('admin/ijsrecept/_form.html.twig') }}
+
+    <a href="{{ path('admin_ijsrecept_index') }}">back to list</a>
+{% endblock %}

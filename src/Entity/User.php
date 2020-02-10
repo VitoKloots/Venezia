@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -44,6 +46,16 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $telefoon;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Bestelregel", mappedBy="user")
+     */
+    private $bestelregels;
+
+    public function __construct()
+    {
+        $this->bestelregels = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -141,6 +153,37 @@ class User implements UserInterface
     public function setTelefoon(string $telefoon): self
     {
         $this->telefoon = $telefoon;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Bestelregel[]
+     */
+    public function getBestelregels(): Collection
+    {
+        return $this->bestelregels;
+    }
+
+    public function addBestelregel(Bestelregel $bestelregel): self
+    {
+        if (!$this->bestelregels->contains($bestelregel)) {
+            $this->bestelregels[] = $bestelregel;
+            $bestelregel->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBestelregel(Bestelregel $bestelregel): self
+    {
+        if ($this->bestelregels->contains($bestelregel)) {
+            $this->bestelregels->removeElement($bestelregel);
+            // set the owning side to null (unless already changed)
+            if ($bestelregel->getUser() === $this) {
+                $bestelregel->setUser(null);
+            }
+        }
 
         return $this;
     }

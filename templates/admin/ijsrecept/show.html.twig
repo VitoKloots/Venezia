@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <h1>Ijsrecept</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Naam</th>
+                <td>{{ ijsrecept.naam }}</td>
+            </tr>
+            <tr>
+                <th>Ingredientenlijst</th>
+                <td>{{ ijsrecept.ingredientenlijst }}</td>
+            </tr>
+            <tr>
+                <th>Recept</th>
+                <td>{{ ijsrecept.recept }}</td>
+            </tr>
+            <tr>
+                <th>Kosten</th>
+                <td>{{ ijsrecept.kosten }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_ijsrecept_index') }}">back to list</a>
+
+    <a href="{{ path('admin_ijsrecept_edit', {'id': ijsrecept.id}) }}">edit</a>
+
+    {{ include('admin/ijsrecept/_delete_form.html.twig') }}
+{% endblock %}
