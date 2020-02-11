@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b7349550-026a-41a7-9c99-1ff9d820c193" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/IjsreceptController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Bestelregel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Bestelregel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/FruitType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/FruitType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/IjsreceptType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/IjsreceptType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/fruit/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/fruit/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/ijsrecept/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/ijsrecept/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="b7349550-026a-41a7-9c99-1ff9d820c193" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -181,7 +170,7 @@
       <workItem from="1581066406221" duration="28000" />
       <workItem from="1581066436349" duration="4537000" />
       <workItem from="1581324649424" duration="7465000" />
-      <workItem from="1581406708910" duration="11561000" />
+      <workItem from="1581406708910" duration="12274000" />
     </task>
     <servers />
   </component>

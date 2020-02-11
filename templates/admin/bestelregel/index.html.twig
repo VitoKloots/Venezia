@@ -24,7 +24,7 @@
                 <td>{{ bestelregel.betaald }}</td>
                 <td>
                     <a class="btn btn-outline-success" href="{{ path('admin_bestelregel_show', {'id': bestelregel.id}) }}">details</a>
-                    <a href="{{ path('admin_bestelregel_edit', {'id': bestelregel.id}) }}">edit</a>
+                    <a class="btn btn-outline-warning" href="{{ path('admin_bestelregel_edit', {'id': bestelregel.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +35,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('admin_bestelregel_new') }}">Create new</a>
+    <a class="btn btn-outline-primary" href="{{ path('admin_bestelregel_new') }}">Create new</a>
 {% endblock %}
