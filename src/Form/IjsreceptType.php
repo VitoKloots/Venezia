@@ -6,6 +6,7 @@ use App\Entity\Fruit;
 use App\Entity\Ijsrecept;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,7 +18,7 @@ class IjsreceptType extends AbstractType
             ->add('naam')
             ->add('ingredientenlijst')
             ->add('recept')
-            ->add('kosten')
+            ->add('kosten', MoneyType::class)
             ->add('fruit', EntityType::class, [
                 'class' => Fruit::class,
                 'choice_label' => 'naam',

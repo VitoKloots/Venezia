@@ -1,34 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block recepten %}
     {{ parent() }}
     <h1>Ijsrecept index</h1>
 
     <table class="table">
         <thead>
             <tr>
+                <th></th>
                 <th>Naam</th>
-                <th>Ingredientenlijst</th>
                 <th>Recept</th>
-                <th>Kosten</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for ijsrecept in ijsrecepts %}
             <tr>
+                <td><img src="" alt="Afbeelding"></td>
                 <td>{{ ijsrecept.naam }}</td>
-                <td>{{ ijsrecept.ingredientenlijst }}</td>
                 <td>{{ ijsrecept.recept }}</td>
-                <td>&euro;{{ ijsrecept.kosten }}</td>
                 <td>
-                    <a href="{{ path('admin_ijsrecept_show', {'id': ijsrecept.id}) }}">show</a>
-                    <a href="{{ path('admin_ijsrecept_edit', {'id': ijsrecept.id}) }}">edit</a>
+                    <a class="btn btn-outline-success" href="{{ path('admin_ijsrecept_show', {'id': ijsrecept.id}) }}">show</a>
+                    <a class="btn btn-outline-warning" href="{{ path('admin_ijsrecept_edit', {'id': ijsrecept.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">Geen recepten gevonden</td>
             </tr>
         {% endfor %}
         </tbody>

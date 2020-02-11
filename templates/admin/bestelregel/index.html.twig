@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bestelregel index{% endblock %}
+
+{% block body %}
+    <h1>Bestelregel index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Aantal</th>
+                <th>Afleverdatum</th>
+                <th>Betaald</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bestelregel in bestelregels %}
+            <tr>
+                <td>{{ bestelregel.id }}</td>
+                <td>{{ bestelregel.aantal }}</td>
+                <td>{{ bestelregel.afleverdatum ? bestelregel.afleverdatum|date('Y-m-d') : '' }}</td>
+                <td>{{ bestelregel.betaald }}</td>
+                <td>
+                    <a class="btn btn-outline-success" href="{{ path('admin_bestelregel_show', {'id': bestelregel.id}) }}">details</a>
+                    <a href="{{ path('admin_bestelregel_edit', {'id': bestelregel.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Geen bestellingen gevonden</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_bestelregel_new') }}">Create new</a>
+{% endblock %}

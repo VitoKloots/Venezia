@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bestelregel{% endblock %}
+
+{% block body %}
+    <h1>Bestelregel</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ bestelregel.id }}</td>
+            </tr>
+            <tr>
+                <th>Aantal</th>
+                <td>{{ bestelregel.aantal }}</td>
+            </tr>
+            <tr>
+                <th>Afleverdatum</th>
+                <td>{{ bestelregel.afleverdatum ? bestelregel.afleverdatum|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Betaald</th>
+                <td>{{ bestelregel.betaald }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_bestelregel_index') }}">back to list</a>
+
+    <a href="{{ path('admin_bestelregel_edit', {'id': bestelregel.id}) }}">edit</a>
+
+    {{ include('admin/bestelregel/_delete_form.html.twig') }}
+{% endblock %}

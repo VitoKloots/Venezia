@@ -47,11 +47,6 @@ class User implements UserInterface
      */
     private $telefoon;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Bestelregel", mappedBy="user")
-     */
-    private $bestelregels;
-
     public function __construct()
     {
         $this->bestelregels = new ArrayCollection();
@@ -153,37 +148,6 @@ class User implements UserInterface
     public function setTelefoon(string $telefoon): self
     {
         $this->telefoon = $telefoon;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Bestelregel[]
-     */
-    public function getBestelregels(): Collection
-    {
-        return $this->bestelregels;
-    }
-
-    public function addBestelregel(Bestelregel $bestelregel): self
-    {
-        if (!$this->bestelregels->contains($bestelregel)) {
-            $this->bestelregels[] = $bestelregel;
-            $bestelregel->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBestelregel(Bestelregel $bestelregel): self
-    {
-        if ($this->bestelregels->contains($bestelregel)) {
-            $this->bestelregels->removeElement($bestelregel);
-            // set the owning side to null (unless already changed)
-            if ($bestelregel->getUser() === $this) {
-                $bestelregel->setUser(null);
-            }
-        }
 
         return $this;
     }

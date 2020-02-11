@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Fruit;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +14,16 @@ class FruitType extends AbstractType
     {
         $builder
             ->add('naam')
-            ->add('seizoen')
+            ->add('seizoen', ChoiceType::class, [
+                'choices' => [
+                    'Seizoenen' => [
+                        'Lente' => 'Lente',
+                        'Zomer' => 'Zomer',
+                        'Herfst' => 'Herfst',
+                        'Winter' => 'Winter',
+                    ]
+                ]
+            ])
         ;
     }
 

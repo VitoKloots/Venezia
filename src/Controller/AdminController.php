@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Bestelregel;
 use App\Entity\Fruit;
 use App\Entity\Ijsrecept;
+use App\Form\BestelregelType;
 use App\Form\FruitType;
 use App\Form\IjsreceptType;
+use App\Repository\BestelregelRepository;
 use App\Repository\FruitRepository;
 use App\Repository\IjsreceptRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -14,15 +17,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-///**
-// *
-// * @IsGranted({"ROLE_ADMIN", "ROLE_SYSTEM"})
-// *
-// * @Route("/admin" name="admin_")
-// */
-
 /**
  * Class AdminController
+ * @IsGranted({"ROLE_ADMIN"})
  * @package App\Controller
  * @Route("/admin", name="admin_")
  */
@@ -33,8 +30,18 @@ class AdminController extends AbstractController
      */
     public function indexIjsReceptAction(IjsreceptRepository $ijsreceptRepository): Response
     {
-        return $this->render('admin/ijsrecept/fruit_overzicht.html.twig', [
+        return $this->render('admin/ijsrecept/index.html.twig', [
             'ijsrecepts' => $ijsreceptRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/bestelregel", name="bestelregel_index", methods={"GET"})
+     */
+    public function indexBestelregelAction(BestelregelRepository $bestelregelRepository): Response
+    {
+        return $this->render('admin/bestelregel/index.html.twig', [
+            'bestelregels' => $bestelregelRepository->findAll(),
         ]);
     }
 
@@ -52,7 +59,7 @@ class AdminController extends AbstractController
             $entityManager->persist($fruit);
             $entityManager->flush();
 
-            return $this->redirectToRoute('admin_fruit_index');
+            return $this->redirectToRoute('fruit_overzicht');
         }
 
         return $this->render('admin/fruit/new.html.twig', [
@@ -62,7 +69,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="fruit_show", methods={"GET"})
+     * @Route("/fruit/{id}", name="fruit_show", methods={"GET"})
      */
     public function showFruitAction(Fruit $fruit): Response
     {
@@ -170,5 +177,72 @@ class AdminController extends AbstractController
         }
 
         return $this->redirectToRoute('admin_ijsrecept_index');
+    }
+
+    /**
+     * @Route("/bestelregel/new", name="bestelregel_new", methods={"GET","POST"})
+     */
+    public function newBestelregelAction(Request $request): Response
+    {
+        $bestelregel = new Bestelregel();
+        $form = $this->createForm(BestelregelType::class, $bestelregel);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($bestelregel);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('admin_bestelregel_index');
+        }
+
+        return $this->render('admin/bestelregel/new.html.twig', [
+            'bestelregel' => $bestelregel,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/bestelregel/{id}", name="bestelregel_show", methods={"GET"})
+     */
+    public function showBestelregel(Bestelregel $bestelregel): Response
+    {
+        return $this->render('admin/bestelregel/show.html.twig', [
+            'bestelregel' => $bestelregel,
+        ]);
+    }
+
+    /**
+     * @Route("/bestelregel/{id}/edit", name="bestelregel_edit", methods={"GET","POST"})
+     */
+    public function editBestelregel(Request $request, Bestelregel $bestelregel): Response
+    {
+        $form = $this->createForm(BestelregelType::class, $bestelregel);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('admin_bestelregel_index');
+        }
+
+        return $this->render('admin/bestelregel/edit.html.twig', [
+            'bestelregel' => $bestelregel,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/bestelregel/{id}", name="bestelregel_delete", methods={"DELETE"})
+     */
+    public function deleteBestelregel(Request $request, Bestelregel $bestelregel): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$bestelregel->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($bestelregel);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('admin_bestelregel_index');
     }
 }

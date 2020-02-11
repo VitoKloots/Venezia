@@ -37,12 +37,6 @@ class Bestelregel
      */
     private $ijsrecept;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="bestelregels")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -96,15 +90,4 @@ class Bestelregel
         return $this;
     }
 
-    public function getUser(): ?user
-    {
-        return $this->user;
-    }
-
-    public function setUser(?user $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
 }
